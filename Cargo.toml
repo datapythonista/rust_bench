@@ -10,4 +10,4 @@ core_affinity = { "version" = "0.5.10" }
 perf-event = "0.4.8"
 
 [profile.release]
-strip = true
+# strip = true

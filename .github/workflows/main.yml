@@ -14,7 +14,9 @@ jobs:
       run: cargo build --release
 
     - name: Run
-      run: ./target/release/rust_bench > result
+      run: ./target/release/rust_bench > result.csv
+      env:
+        RUST_BACKTRACE: 1
 
     - name: Show summary
       run: cut -d"," -f5 result.csv | tail +2 | sort | uniq -c

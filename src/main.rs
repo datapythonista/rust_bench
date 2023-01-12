@@ -78,7 +78,7 @@ fn main() {
 
     let iterations: u64 = {if args.len() >= 2 { args[1].parse().unwrap() } else { 1000 }};
 
-    core_affinity::set_for_current(core_affinity::CoreId{id: 3});
+    // core_affinity::set_for_current(core_affinity::CoreId{id: 3});
 
     run_benchmark_many(iterations);
 }

@@ -1,0 +1,26 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  run_benchmark:
+    name: Run benchmark
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build
+      run: cargo build --release
+
+    - name: Run
+      run: ./target/release/rust_bench > result
+
+    - name: Show summary
+      run: cut -d"," -f5 result.csv | tail +2 | sort | uniq -c
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: result.csv
+        path: result.csv
